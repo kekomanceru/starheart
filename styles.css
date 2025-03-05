@@ -1,0 +1,51 @@
+/* CSS: Yıldızlar ve kalpler için stil */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right , #49395b, #382d34);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    font-family: Arial;
+    font-size: 25px;
+    color: #db25ba;
+}
+
+.falling-object {
+    position: absolute;
+    width: 60px; /* PNG boyutunu ayarlayabilirsin */
+    animation: fall linear infinite;
+}
+
+.star {
+}
+
+.heart {
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    display: none;
+}

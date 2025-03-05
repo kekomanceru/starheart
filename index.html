@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Stars & Hearts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>POP MY HEART 🌟</h1>
+    <h1>OR MAKE A WISH ❤️</h1>
+    <div class="message-box" id="messageBox">Bir yıldız ya da kalbe tıkla!</div>
+    <img src="star.png" class="falling-object star">
+    <img src="heart.png" class="falling-object heart">
+
+
+
+
+    <script>
+
+        // kelimeBase
+
+        const starRizzArray = [
+    "Bir yıldız seçtin: 'Senin için bir dilek tuttum!'",
+    "Bir yıldız seçtin: 'Senin gibi birine rastlamak çok nadir!'",
+    "Bir yıldız seçtin: 'Bu yıldız kadar parlaksın!'",
+    "Bir yıldız seçtin: 'Kalbimi aydınlatıyorsun!'",
+    "Bir yıldız seçtin: 'Sen gökyüzümdeki en parlak yıldızsın!'",
+    "Bir yıldız seçtin: 'Seninle her şey bir yıldızlı gece kadar büyülü!'",
+    "Bir yıldız seçtin: 'Gözlerin yıldızlardan bile parlak!'",
+    "Bir yıldız seçtin: 'Gökyüzü senin gibi bir mucizeye tanık oluyor!'",
+    "Bir yıldız seçtin: 'Etrafı aydınlatan o ışıksın!'",
+    "Bir yıldız seçtin: 'Bu yıldız, senin kadar eşsiz bir parıltıya sahip!'",
+    "Bir yıldız seçtin: 'Her yıldızda biraz sihir var, ama sende hepsi birleşmiş!'",
+    "Bir yıldız seçtin: 'Seninle her şey bir dilek yıldızı gibi gerçekleşiyor!'",
+    "Bir yıldız seçtin: 'Bu yıldız kadar sonsuz bir enerji yayıyorsun!'",
+    "Bir yıldız seçtin: 'Gözlerimdeki yıldızları gökyüzüne geri vermiş gibisin!'",
+    "Bir yıldız seçtin: 'Senin gibi bir yıldız, galaksiye yakışır!'",
+    "Bir yıldız seçtin: 'Gökyüzü bile senin güzelliğinle yarışamaz!'",
+    "Bir yıldız seçtin: 'Yıldızlar kadar özgün ve parlaksın!'",
+    "Bir yıldız seçtin: 'Senin yanında yıldızlar sönük kalıyor!'",
+    "Bir yıldız seçtin: 'Parıltın, evrendeki tüm yıldızlardan daha güçlü!'",
+    "Bir yıldız seçtin: 'Seninle her an sonsuz bir gece gibi hissettiriyor!'",
+    "Bir yıldız seçtin: 'Gökyüzü bile seninle tamamlanıyor!'",
+    "Bir yıldız seçtin: 'Yıldızlar seninle dans etmeyi tercih ederdi!'",
+    "Bir yıldız seçtin: 'Senin ışığın evreni aydınlatıyor!'",
+    "Bir yıldız seçtin: 'Sen galaksimin merkezi oldun!'",
+    "Bir yıldız seçtin: 'Bu yıldız senin kadar özel olamaz!'",
+    "Bir yıldız seçtin: 'Dünya üzerindeki en parlak anımsın!'",
+    "Bir yıldız seçtin: 'Sonsuz bir gecenin en güzel yıldızısın!'",
+    "Bir yıldız seçtin: 'Evren bile senin gibi bir parıltıyı kıskanıyor!'",
+    "Bir yıldız seçtin: 'Senin yanında gökyüzü sonsuz bir kutlama gibi!'",
+    "Bir yıldız seçtin: 'Sen, yıldızların bile anlatamadığı bir hikayesin!'",
+    "Bir yıldız seçtin: 'Senin gibi bir yıldız, yalnızca bir ömürde bir kez parlar!'",
+    "Bir yıldız seçtin: 'Gökyüzündeki tüm yıldızlar senin parlaklığından ilham alıyor!'",
+    "Bir yıldız seçtin: 'Dileklerime cevap oldun, tıpkı bu yıldız gibi!'",
+    "Bir yıldız seçtin: 'Sen, karanlığımı aydınlatan sonsuz bir umutsun!'",
+    "Bir yıldız seçtin: 'Gökyüzü seninle güzelleşiyor!'",
+    "Bir yıldız seçtin: 'Her dilek yıldızında seni hatırlıyorum!'",
+    "Bir yıldız seçtin: 'Sen benim yaşam galaksimdeki en parlak yıldızsın!'",
+    "Bir yıldız seçtin: 'Bu yıldızlar bile senin gibi parlayamaz!'",
+    "Bir yıldız seçtin: 'Evren senin gibi bir yıldız yaratmak için beklemiş!'",
+    "Bir yıldız seçtin: 'Her an seni keşfetmek gibi bir evren yolculuğu!'",
+    "Bir yıldız seçtin: 'Yıldızlar bile seninle yarışmak istemiyor!'",
+    "Bir yıldız seçtin: 'Sonsuz geceler seninle ışıldıyor!'",
+    "Bir yıldız seçtin: 'Senin ışığın her karanlığı aydınlatıyor!'",
+    "Bir yıldız seçtin: 'Seninle her şey bir yıldız masalı gibi!'",
+    "Bir yıldız seçtin: 'Yıldızların gücü sende saklı!'",
+    "Bir yıldız seçtin: 'Sen benim sonsuzluk yıldızımsın!'",
+    "Bir yıldız seçtin: 'Gökyüzünün en parlak hediyesisin!'"
+];
+const heartRizzArray = [
+    "Bir kalp seçtin: 'Sonsuz sevgiyle dolusun!'",
+    "Bir kalp seçtin: 'Kalbimin en güzel köşesindesin!'",
+    "Bir kalp seçtin: 'Bu kalpte sana yer açtım!'",
+    "Bir kalp seçtin: 'Sevgim seninle daha da büyüyor!'",
+    "Bir kalp seçtin: 'Kalbim hep seninle atıyor!'",
+    "Bir kalp seçtin: 'Seninle her şey daha sıcak ve sevgi dolu!'",
+    "Bir kalp seçtin: 'Sen kalbimin ritmini belirliyorsun!'",
+    "Bir kalp seçtin: 'Aşkın kalbimi tamamen fethetti!'",
+    "Bir kalp seçtin: 'Bu kalbin anahtarı yalnızca sende!'",
+    "Bir kalp seçtin: 'Sevgi, seninle anlamını buluyor!'",
+    "Bir kalp seçtin: 'Seninle dolu bir kalbim var!'",
+    "Bir kalp seçtin: 'Kalbimin tüm güzellikleri sana ait!'",
+    "Bir kalp seçtin: 'Aşkımız her geçen gün bu kalp gibi büyüyor!'",
+    "Bir kalp seçtin: 'Kalbimde senin için özel bir yer var!'",
+    "Bir kalp seçtin: 'Sevgin beni her gün yeniden hayata bağlıyor!'",
+    "Bir kalp seçtin: 'Sonsuz sevgimin bir simgesi gibi!'",
+    "Bir kalp seçtin: 'Bu kalp yalnızca senin için atıyor!'",
+    "Bir kalp seçtin: 'Sevgimiz, kalbimdeki en güçlü ritim!'",
+    "Bir kalp seçtin: 'Kalpler birleştiğinde, mucizeler olur!'",
+    "Bir kalp seçtin: 'Seninle dolu bir hayat, kalbime iyi geliyor!'",
+    "Bir kalp seçtin: 'Aşkımız bu kalp gibi dayanıklı ve güzel!'",
+    "Bir kalp seçtin: 'Sevgim, bu kalpten taşarak sana ulaşıyor!'",
+    "Bir kalp seçtin: 'Kalbimi sonsuz sevgine adadım!'",
+    "Bir kalp seçtin: 'Sevgimiz kalbime ışık saçıyor!'",
+    "Bir kalp seçtin: 'Her an seni düşünerek atan bir kalbim var!'",
+    "Bir kalp seçtin: 'Sevgiyle dolu bir kalp, yalnızca senin için!'",
+    "Bir kalp seçtin: 'Sonsuz aşka uzanan bir kalp!'",
+    "Bir kalp seçtin: 'Kalbimdeki her ritim senin adını söylüyor!'",
+    "Bir kalp seçtin: 'Sevgim, bu kalp gibi her zaman canlı!'",
+    "Bir kalp seçtin: 'Kalbim, seni sevmekten hiç yorulmuyor!'",
+    "Bir kalp seçtin: 'Aşkımız, bu kalp gibi güçlü ve parlak!'",
+    "Bir kalp seçtin: 'Bu kalp, seni her zaman hatırlatıyor!'",
+    "Bir kalp seçtin: 'Sonsuz bir sevginin işareti!'",
+    "Bir kalp seçtin: 'Kalbim seninle dolup taşıyor!'",
+    "Bir kalp seçtin: 'Bu kalp, aşkla atan bir mucize!'",
+    "Bir kalp seçtin: 'Sevginle bu kalp daha güçlü atıyor!'",
+    "Bir kalp seçtin: 'Seninle bu kalp hiç yorulmuyor!'",
+    "Bir kalp seçtin: 'Kalbimdeki tüm sevgi senin için!'",
+    "Bir kalp seçtin: 'Aşkımız, bu kalp kadar renkli ve güzel!'",
+    "Bir kalp seçtin: 'Sonsuz sevgimin bir diğer sembolü!'",
+    "Bir kalp seçtin: 'Sonsuz bir aşka giden bir kalp daha!'",
+    "Bir kalp seçtin: 'Her atışında seni hisseden bir kalbim var!'",
+    "Bir kalp seçtin: 'Bu kalbin tüm sevgisi sana ait!'",
+    "Bir kalp seçtin: 'Sevgim her geçen gün büyüyor, tıpkı bu kalp gibi!'",
+    "Bir kalp seçtin: 'Senin için atan bir kalp daha buldun!'",
+    "Bir kalp seçtin: 'Seninle bu kalbin ritmi sonsuz!'",
+    "Bir kalp seçtin: 'Her şey seninle anlam kazanıyor!'",
+    "Bir kalp seçtin: 'Kalplerin en değerlisi seninle birlikte!'",
+    "Bir kalp seçtin: 'Sonsuz aşkımın bir başka işareti!'"
+];
+
+
+        // Selecting
+    function getRandomRizz(array) {
+        const randomIndex = Math.floor(Math.random() * array.length); // Rastgele bir index seç
+        return array[randomIndex]; // Seçilen indexteki elemanı döndür
+    }
+
+        // JavaScript: Düşen nesneler ve mesajlar
+        function createFallingObject(type) {
+    const object = document.createElement('img');
+    object.src = type === 'star' ? 'star.png' : 'heart.png';
+    object.classList.add('falling-object', type);
+    object.style.left = Math.random() * 100 + 'vw';
+    object.style.animationDuration = Math.random() * 5 + 3 + 's';
+
+    object.addEventListener('click', () => {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.innerHTML = type === 'star'? getRandomRizz(starRizzArray) : getRandomRizz(heartRizzArray);
+        messageBox.style.display = 'block';
+        setTimeout(() => {
+            messageBox.style.display = 'none';
+        }, 1500);
+    });
+
+    document.body.appendChild(object);
+
+    setTimeout(() => {
+        document.body.removeChild(object);
+    }, 8000);
+}
+
+
+        // Yıldız ve kalp üret
+        setInterval(() => {
+            createFallingObject('star');
+            createFallingObject('heart');
+        }, 250);
+    </script>
+</body>
+</html>
