@@ -138,7 +138,7 @@ const heartRizzArray = [
 
     object.addEventListener('click', () => {
         const messageBox = document.getElementById('messageBox');
-        messageBox.innerHTML = type === 'star'? getRandomRizz(starRizzArray) : getRandomRizz(heartRizzArray);
+        messageBox.innerHTML = type === 'star'? "🌟 Oylum " + getRandomRizz(starRizzArray) :"❤️ Aşkım " +  getRandomRizz(heartRizzArray);
         messageBox.style.display = 'block';
         setTimeout(() => {
             messageBox.style.display = 'none';
